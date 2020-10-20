@@ -54,7 +54,7 @@ Things you may want to cover:
 | category_id     | integer   | NOT NULL                   |
 | condition_id    | integer   | NOT NULL                   |
 | postage_id      | integer   | NOT NULL                   |
-| region_id       | integer   | NOT NULL                   |
+| prefecture_id   | integer   | NOT NULL                   |
 | shipping_date_id| integer   | NOT NULL                   |
 | price           | integer   | NOT NULL                   |
 
