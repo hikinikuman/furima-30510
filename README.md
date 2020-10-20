@@ -46,17 +46,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column       | Type      | Options                    |
-| ------------ | --------- | -------------------------- |
-| user         | reference | NOT NULL foreign_key: true |
-| name         | string    | NOT NULL                   |
-| description  | text      | NOT NULL                   |
-| category     | integer   | NOT NULL                   |
-| condition    | integer   | NOT NULL                   |
-| postage      | integer   | NOT NULL                   |
-| region       | integer   | NOT NULL                   |
-| shipping_date| integer   | NOT NULL                   |
-| price        | integer   | NOT NULL                   |
+| Column          | Type      | Options                    |
+| --------------- | --------- | -------------------------- |
+| user            | reference | NOT NULL foreign_key: true |
+| name            | string    | NOT NULL                   |
+| description     | text      | NOT NULL                   |
+| category_id     | integer   | NOT NULL                   |
+| condition_id    | integer   | NOT NULL                   |
+| postage_id      | integer   | NOT NULL                   |
+| region_id       | integer   | NOT NULL                   |
+| shipping_date_id| integer   | NOT NULL                   |
+| price           | integer   | NOT NULL                   |
 
 
 ### Association
@@ -83,7 +83,7 @@ has_one : address
 | Column        | Type       | Options                    |
 | ------------- | ---------- | -------------------------- |
 | post_code     | string     | NOT NULL                   |
-| prefecture    | integer    | NOT NULL                   |
+| prefecture_id | integer    | NOT NULL                   |
 | municipality  | string     | NOT NULL                   |
 | address       | string     | NOT NULL                   |
 | building_name | string     |                            |
