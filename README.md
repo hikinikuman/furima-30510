@@ -51,12 +51,11 @@ Things you may want to cover:
 | user         | reference | NOT NULL foreign_key: true |
 | name         | string    | NOT NULL                   |
 | description  | text      | NOT NULL                   |
-| image        | 今後実装（？）
-| category     | string    | NOT NULL                   |
-| condition    | string    | NOT NULL                   |
-| postage      | string    | NOT NULL                   |
-| region       | string    | NOT NULL                   |
-| shipping-date| string    | NOT NULL                   |
+| category     | integer   | NOT NULL                   |
+| condition    | integer   | NOT NULL                   |
+| postage      | integer   | NOT NULL                   |
+| region       | integer   | NOT NULL                   |
+| shipping_date| integer   | NOT NULL                   |
 | price        | integer   | NOT NULL                   |
 
 
@@ -83,11 +82,11 @@ has_one : address
 
 | Column        | Type       | Options                    |
 | ------------- | ---------- | -------------------------- |
-| post-code     | string     | NOT NULL                   |
-| prefecture    | string     | NOT NULL                   |
+| post_code     | string     | NOT NULL                   |
+| prefecture    | integer    | NOT NULL                   |
 | municipality  | string     | NOT NULL                   |
 | address       | string     | NOT NULL                   |
-| building_name | string     | NOT NULL                   |
+| building_name | string     |                            |
 | phone_num     | string     | NOT NULL                   |
 | purchase      | references | NOT NULL foreign_key: true |
 
