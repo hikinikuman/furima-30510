@@ -93,3 +93,5 @@ has_one : address
 
 ### Association
 belongs_to :purchase
+
+#### ＊ブランチ生成し忘れたのでブランチへのcommitも含めてこの行を生成しました。
