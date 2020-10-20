@@ -29,14 +29,14 @@ Things you may want to cover:
 
 | Column           | Type   | Options     |
 | ---------------- | ------ | ----------- |
-| nickname         | string | NOT NULL    |
-| email            | string | NOT NULL    |
-| password         | string | NOT NULL    |
-| family_name      | string | NOT NULL    |
-| first_name       | string | NOT NULL    |
-| family_name_kana | string | NOT NULL    |
-| first_name_kana  | string | NOt NULL    |
-| birth_day        | date   | NOT NULL    |
+| nickname         | string | null: false |
+| email            | string | null: false |
+| password         | string | null: false |
+| family_name      | string | null: false |
+| first_name       | string | null: false |
+| family_name_kana | string | null: false |
+| first_name_kana  | string | null: false |
+| birth_day        | date   | null: false |
 
 
 ### Association
@@ -46,17 +46,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column          | Type      | Options                    |
-| --------------- | --------- | -------------------------- |
-| user            | reference | NOT NULL foreign_key: true |
-| name            | string    | NOT NULL                   |
-| description     | text      | NOT NULL                   |
-| category_id     | integer   | NOT NULL                   |
-| condition_id    | integer   | NOT NULL                   |
-| postage_id      | integer   | NOT NULL                   |
-| prefecture_id   | integer   | NOT NULL                   |
-| shipping_date_id| integer   | NOT NULL                   |
-| price           | integer   | NOT NULL                   |
+| Column          | Type       | Options                       |
+| --------------- | ---------- | ----------------------------- |
+| user            | references | null: false foreign_key: true |
+| name            | string     | null: false                   |
+| description     | text       | null: false                   |
+| category_id     | integer    | null: false                   |
+| condition_id    | integer    | null: false                   |
+| postage_id      | integer    | null: false                   |
+| prefecture_id   | integer    | null: false                   |
+| shipping_date_id| integer    | null: false                   |
+| price           | integer    | null: false                   |
 
 
 ### Association
@@ -66,10 +66,10 @@ Things you may want to cover:
 
 ## purchases テーブル
 
-| Column    | Type       | Options                    |
-| --------- | ---------- | -------------------------- |
-| user      | references | NOT NULL foreign_key: true |
-| item      | references | NOT NULL foreign_key: true |
+| Column    | Type       | Options                       |
+| --------- | ---------- | ----------------------------- |
+| user      | references | null: false foreign_key: true |
+| item      | references | null: false foreign_key: true |
 
 
 ### Association
@@ -80,15 +80,15 @@ has_one : address
 
 ## addresses テーブル
 
-| Column        | Type       | Options                    |
-| ------------- | ---------- | -------------------------- |
-| post_code     | string     | NOT NULL                   |
-| prefecture_id | integer    | NOT NULL                   |
-| municipality  | string     | NOT NULL                   |
-| address       | string     | NOT NULL                   |
-| building_name | string     |                            |
-| phone_num     | string     | NOT NULL                   |
-| purchase      | references | NOT NULL foreign_key: true |
+| Column        | Type       | Options                       |
+| ------------- | ---------- | ----------------------------- |
+| post_code     | string     | null: false                   |
+| prefecture_id | integer    | null: false                   |
+| municipality  | string     | null: false                   |
+| address       | string     | null: false                   |
+| building_name | string     |                               |
+| phone_num     | string     | null: false                   |
+| purchase      | references | null: false foreign_key: true |
 
 ### Association
 belongs_to :purchase
