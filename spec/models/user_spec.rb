@@ -1,13 +1,3 @@
-# require 'rails_helper'
-# RSpec.describe User, type: :model do
-# describe 'ユーザー新規登録' do
-# it "nicknameが空だと登録できない" do
-# end
-# it "emailが空では登録できない" do
-# end
-# end
-# end
-
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -55,9 +45,16 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
 
-      it 'パスワードは、半角英数字混合での入力が必須であること' do
+      it 'パスワードは、数字を入力した場合に登録ができない' do
         @user.password = '123456'
         @user.password_confirmation = '123456'
+        @user.valid?
+        expect(@user.errors.full_messages).to include
+      end
+
+      it 'パスワードに英字のみを入力した場合に登録ができない' do
+        @user.password = 'abcdef'
+        @user.password_confirmation = 'abcdef'
         @user.valid?
         expect(@user.errors.full_messages).to include
       end
@@ -78,29 +75,57 @@ RSpec.describe User, type: :model do
     end
 
     describe '新規登録/本人情報確認' do
-      it 'ユーザー本名は、名字と名前がそれぞれ必須であること' do
+      it 'ユーザー本名は、名字が必須であること' do
         @user.family_name = nil
-        @user.first_name = nil
+        @user.first_name = '樹'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name can't be blank", "First name can't be blank")
+        expect(@user.errors.full_messages).to include("Family name can't be blank")
       end
 
-      it 'ユーザー本名は、全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
+      it 'ユーザー本名は、名前が必須であること' do
+        @user.family_name = '中薗'
+        @user.first_name = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name can't be blank")
+      end
+
+      it 'ユーザー本名は、名字が全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
         @user.family_name = 'nakazono'
+        @user.first_name = '樹'
+        @user.valid?
+        expect(@user.errors.full_messages).to include
+      end
+
+      it 'ユーザー本名は、名前が全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
+        @user.family_name = '中薗'
         @user.first_name = 'tatsuki'
         @user.valid?
         expect(@user.errors.full_messages).to include
       end
 
-      it 'ユーザー本名のフリガナは、名字と名前でそれぞれ必須であること' do
+      it 'ユーザー本名のフリガナは、名字が必須であること' do
         @user.family_name_kana = nil
-        @user.first_name_kana = nil
+        @user.first_name_kana = 'タツキ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name kana can't be blank", "First name kana can't be blank")
+        expect(@user.errors.full_messages).to include("Family name kana can't be blank")
       end
 
-      it 'ユーザー本名のフリガナは、全角（カタカナ）での入力が必須であること' do
+      it 'ユーザー本名のフリガナは、名前が必須であること' do
+        @user.family_name_kana = 'ナカゾノ'
+        @user.first_name_kana = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana can't be blank")
+      end
+
+      it 'ユーザー本名のフリガナは、名字が全角（カタカナ）での入力が必須であること' do
         @user.family_name_kana = 'nakazono'
+        @user.first_name_kana = 'タツキ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include
+      end
+
+      it 'ユーザー本名のフリガナは、名前が全角（カタカナ）での入力が必須であること' do
+        @user.family_name_kana = 'ナカゾノ'
         @user.first_name_kana = 'tatsuki'
         @user.valid?
         expect(@user.errors.full_messages).to include
