@@ -9,26 +9,17 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  # with_options presence: true do
-  # validates :name
-  # validates :description
-  # validates :category_id
-  # validates :condition_id
-  # validates :postage_id
-  # validates :prefecture_id
-  # validates :shipping_date_id
-  # validates :price
-  # end
+
 
   with_options presence: true do
-    validates :name          #format: #{ with: message: 'is invalid.' }
-    validates :description   #format: #{ message: 'is invalid.' }
-    validates :category      #format: #{ message: 'is invalid.' }
-    validates :condition     #format: #{ message: 'is invalid.' }
-    validates :postage       #format: #{ message: 'is invalid.' }
-    validates :prefecture    #format: #{ message: 'is invalid.' }
-    validates :shipping_date #format: #{ message: 'is invalid.' }
-    validates :price,         format: { with: /\d/, message: 'is invalid.' }
+    validates :name         
+    validates :description   
+    validates :category      
+    validates :condition    
+    validates :postage       
+    validates :prefecture    
+    validates :shipping_date 
+    validates :price          
   end
 
   validates :category_id,      numericality: { other_than: 1 }
@@ -37,5 +28,6 @@ class Item < ApplicationRecord
   validates :prefecture_id,    numericality: { other_than: 1 }
   validates :shipping_date_id, numericality: { other_than: 1 }
 
-  #validates :price,            format: { with: /\d/, message: 'is invalid.' }
+  validates :price,            numericality: { greater_than_or_equal_to: 300 }
+  validates :price,            numericality: { less_than_or_equal_to: 9999999 }
 end
