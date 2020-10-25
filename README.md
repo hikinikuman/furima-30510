@@ -40,8 +40,8 @@ Things you may want to cover:
 
 
 ### Association
- has_many : items
- has_many : purchases
+ has_many :items
+ has_many :purchases
 
 
 ## items テーブル
@@ -61,7 +61,7 @@ Things you may want to cover:
 
 ### Association
  belong_to :user
- has_one : purchase
+ has_one :purchase
 
 
 ## purchases テーブル
@@ -75,7 +75,7 @@ Things you may want to cover:
 ### Association
 belongs_to :user
 belongs_to :item
-has_one : address
+has_one :address
 
 
 ## addresses テーブル

@@ -7,19 +7,19 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_date
 
   belongs_to :user
+  has_one :purchase
+
   has_one_attached :image
 
-
-
   with_options presence: true do
-    validates :name         
-    validates :description   
-    validates :category      
-    validates :condition    
-    validates :postage       
-    validates :prefecture    
-    validates :shipping_date 
-    validates :price          
+    validates :name
+    validates :description
+    validates :category
+    validates :condition
+    validates :postage
+    validates :prefecture
+    validates :shipping_date
+    validates :price
   end
 
   validates :category_id,      numericality: { other_than: 1 }
@@ -29,5 +29,5 @@ class Item < ApplicationRecord
   validates :shipping_date_id, numericality: { other_than: 1 }
 
   validates :price,            numericality: { greater_than_or_equal_to: 300 }
-  validates :price,            numericality: { less_than_or_equal_to: 9999999 }
+  validates :price,            numericality: { less_than_or_equal_to: 9_999_999 }
 end
