@@ -24,17 +24,20 @@
       </span>
     </div>
 
+    <% if current_user %>
 
-    <% if current_user == @item.user %>
-      <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
-      <p class='or-text'>or</p>
-      <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
+      <% if current_user == @item.user %>
+        <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
+        <p class='or-text'>or</p>
+        <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
+      <% end %>
+
+
+      <% if @purchases.nil? %>
+        <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+      <% end %>
+      
     <% end %>
-
-    <% if @purchases.nil? %>
-      <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
-    <% end %>
-
 
     <div class="item-explain-box">
       <span><%= @item.description %></span>
