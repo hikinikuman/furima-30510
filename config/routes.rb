@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #get 'categories/new'
   devise_for :users
   root to: 'items#index' 
-  resources :items, only: [:index, :new, :create]
+  resources :items, only: [:index, :new, :create, :show]
   resources :purchases, only: [:index]
 
 end
