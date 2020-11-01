@@ -35,12 +35,10 @@
       <% end %>
 
 
-      <%# if @purchases.nil? && !@item.user %>
+
       <% if @item.purchase == nil%>
         <% unless current_user == @item.user%>
           <%= link_to '購入画面に進む', item_purchases_path(@item), class:"item-red-btn"%> 
-
-        <%#= link_to '購入画面に進む', "#" ,class:"item-red-btn"%> 
         <% end %>
       <% end %>
 
