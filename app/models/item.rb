@@ -14,11 +14,11 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :description
-    validates :category
-    validates :condition
-    validates :postage
-    validates :prefecture
-    validates :shipping_date
+    validates :category_id
+    validates :condition_id
+    validates :postage_id
+    validates :prefecture_id
+    validates :shipping_date_id
     validates :price
   end
 
