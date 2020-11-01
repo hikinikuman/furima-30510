@@ -10,6 +10,11 @@ RSpec.describe PurchaseAddress, type: :model do
       expect(@purchase_address).to be_valid
     end
 
+    it 'building_nameが空でも保存できること' do
+      @purchase_address.building_name = nil
+      expect(@purchase_address).to be_valid
+    end
+
     it 'post_codeが空では保存できないこと' do
       @purchase_address.post_code = nil
       @purchase_address.valid?
@@ -38,11 +43,6 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.address = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include
-    end
-
-    it 'building_nameが空でも保存できること' do
-      @purchase_address.building_name = nil
-      expect(@purchase_address).to be_valid
     end
 
     it 'phone_numが空では登録できないこと' do

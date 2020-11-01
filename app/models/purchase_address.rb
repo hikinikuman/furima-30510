@@ -6,15 +6,11 @@ class PurchaseAddress
   with_options presence: true do
     validates :token
     validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :prefecture_id
+    validates :prefecture_id, numericality: { other_than: 1 }
     validates :municipality
     validates :address
     validates :phone_num, format: { with: /\A0[789]0\d{8}\z/, message: 'is invalid.' }
   end
-
-  validates :prefecture_id, numericality: { other_than: 1 }
-
-
 
   def save
 
