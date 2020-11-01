@@ -5,13 +5,12 @@ FactoryBot.define do
     municipality  { '東京都' }
     address       { '1-1' }
     building_name { '東京ハイツ' }
-    phone_num     { '09012345678'}
-    token         {"tok_abcdefghijk00000000000000000"}
-    user_id       {1}
-    item_id       {1}
-    
+    phone_num     { '09012345678' }
+    token         { 'tok_abcdefghijk00000000000000000' }
+    user_id       { 1 }
+    item_id       { 1 }
 
-    #association :user
-    #association :item
+    # association :user
+    # association :item
   end
 end

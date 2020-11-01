@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    #@user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def edit
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if current_user == @item.user 
+    if current_user == @item.user
       @item.destroy
       redirect_to root_path
     else
