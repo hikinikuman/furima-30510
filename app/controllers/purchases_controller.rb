@@ -39,6 +39,7 @@ class PurchasesController < ApplicationController
       card: address_params[:token],
       currency: 'jpy'                
     )
+  end
 
   def item_find
     @item = Item.find(params[:item_id])
