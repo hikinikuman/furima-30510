@@ -20,6 +20,7 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :shipping_date_id
     validates :price
+    validates :image
   end
 
   validates :category_id,      numericality: { other_than: 1 }
